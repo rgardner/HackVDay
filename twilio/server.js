@@ -129,6 +129,7 @@ app.all('/getsms', function(req, res){
     	if(message.toLowerCase() == "done" || message.toLowerCase() == "start"){
     		if(message.toLowerCase() == "done"){
     			for(i in queue){
+    				console.log(i);
     				if(queue["person"] == from){
     					console.log("You did 2");
     				}
