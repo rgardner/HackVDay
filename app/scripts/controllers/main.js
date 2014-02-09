@@ -16,7 +16,7 @@ angular.module('hackvdayApp')
                                 message:  $scope.delivery.message,
                                 sender:     $scope.delivery.sender,
                                 phoneNumber: $scope.delivery.phoneNumber,
-                                destination: $scope.delivery.destination,
+                                dorm: $scope.delivery.dorm,
                                 roomNumber: $scope.delivery.roomNumber
                         });
         $scope.newPerson = {};
