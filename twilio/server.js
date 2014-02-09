@@ -86,6 +86,7 @@ app.all('/getsms', function(req, res){
     		if(queue.length != 0){
     			submitRequestToIndividual(queue[0], from);
     			queue = queue.shift();
+    			console.log(queue);
     		} else {
     			twilio.sendMessage({
 					to: from,
