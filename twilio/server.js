@@ -24,6 +24,7 @@ var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
 var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
 var GramarcyLocations = ['Gramercy Green', '26th Street'];
 
+var techatnyuNumbers = ['+13473076953'];
 var WSP = [''];
 var Greenwich = [''];
 var UnionSquare = [''];
@@ -43,14 +44,11 @@ var determinePhoneByLocation = function(location, obj){
 	} else if(SOHOLocations.indexOf(location) >= 0) {
 		SOHOrequests.push(obj);
 	} else if(ThirdAveLocations.indexOf(location) >= 0) {
-		console.log(ThirdAverequests);
 		ThirdAverequests.push(obj);
 	} else if(GramarcyLocations.indexOf(location) >= 0) {
 		Gramarcyrequests.push(obj)
 	}
 };
-
-var techatnyuNumbers = ['+13473076953'];
 
 var submitRequestToIndividual = function(request, giveRequestTo){
 	twilio.sendMessage({
@@ -100,7 +98,7 @@ var incomingRequest = function(ID, requestData){
 	var name = requestData["sender"];
 	var recipient = requestData["recipient"];
 	var phonenumber = requestData["phoneNumber"];
-	var location = (requestData["dorm"]) + " " + (requestData["roomNumber"]);
+	var location = (requestData["dorm"]) + ", Room:" + (requestData["roomNumber"]);
 	var dorm = requestData["dorm"];
 	var obj = {ID:ID, name:recipient, phonenumber:phonenumber, location:location};
 	determinePhoneByLocation(dorm, obj);
@@ -133,7 +131,7 @@ app.all('/getsms', function(req, res){
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
-    	if(message.toLowerCase() == "done"){
+    	if(message.toLowerCase() == "done" || message.toLowerCase() == "start"){
     		if(WSP.indexOf(from) >= 0){
     			if(WSPrequests.length != 0){
 	    			submitRequestToIndividual(WSPrequests[0], from);
