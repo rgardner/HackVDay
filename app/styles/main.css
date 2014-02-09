@@ -4,7 +4,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @font-face {
     font-family: Lighthouse;
-    src: url(fonts/Lighthouse.ttf);
+    src: url(./Lighthouse.ttf);
 }
 
 .browsehappy {
