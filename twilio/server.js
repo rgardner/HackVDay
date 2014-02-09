@@ -10,6 +10,7 @@ app.listen(port, function() {
 });
 var twilio = require('twilio')('ACd44100ff63d9f063b149272c1c9b8f64', '372306737e389b83729d9d7f5c0fe1e2');
 
+var queue = [];
 var WSPrequests = [];
 var Greenwichrequests = [];
 var UnionSquarerequests = [];
@@ -34,7 +35,6 @@ var Gramarcy = [''];
 var Others = [''];
 
 var determinePhoneByLocation = function(location, obj){
-	console.log(location);
 	if(WSPLocations.indexOf(location) >= 0){
 		WSPrequests.push(obj);
 	} else if(GreenwichLocations.indexOf(location) >= 0){
@@ -51,6 +51,8 @@ var determinePhoneByLocation = function(location, obj){
 };
 
 var submitRequestToIndividual = function(request, giveRequestTo){
+	queue.push({person: giveRequestTo, information: request});
+	console.log(queue);
 	twilio.sendMessage({
 		to: giveRequestTo,
 		from: '+14423337001',
