@@ -126,15 +126,15 @@ app.all('/getsms', function(req, res){
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
-    	if(message.toLowerCase() == "done" || message.toLowerCase() == "start"){
-    		if(message.toLowerCase() == "done"){
-    			for(i in queue){
-    				console.log(i);
-    				if(queue["person"] == from){
-    					console.log("You did 2");
-    				}
+    	if(message.toLowerCase() == "done"){
+    		for(i in queue){
+    			console.log(i);
+    			if(queue["person"] == from){
+    				console.log("You did 2");
     			}
     		}
+    	}
+    	if(message.toLowerCase() == "done" || message.toLowerCase() == "start"){
     		if(WSP.indexOf(from) >= 0){
     			if(WSPrequests.length != 0){
 	    			submitRequestToIndividual(WSPrequests[0], from);
