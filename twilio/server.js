@@ -28,10 +28,7 @@ var sendSMSforConfirmation = function(name, phonenumber, location){
 			from: '+14423337001',
 			body: "Hey " + name + " we've got your request."
 	}, function(err, responseData){
-		if(!err){
-			console.log(responseData.from);
-			console.log(responseData.body);
-		} else {
+		if(err){
 			console.log(err);
 		}
 	});
@@ -72,10 +69,11 @@ var sendAllTechatNYUPeopleSMS = function(){
 var incomingRequest = function(name, phonenumber, location){
 	var obj = {name:name, phonenumber:phonenumber, location:location};
 	queue.push(obj);
-	//sendSMSforConfirmation(name, phonenumber, location);
+	sendSMSforConfirmation(name, phonenumber, location);
 };
 
 incomingRequest("Abhi", "+13473076953", "Courant");
+incomingRequest("Bob", "+14256149938", "Courant");
 
 app.all('/getsms', function(req, res){
 	var message = req.query.Body;
