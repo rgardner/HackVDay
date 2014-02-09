@@ -3,7 +3,6 @@
 angular.module('hackvdayApp')
   .controller('MainCtrl', function ($scope, $location, $anchorScroll, $firebase) {
     $scope.phoneValidation = /^\d{10}$/;
-    $scope.roomValidation = /^\d{1,4}$/;
     $scope.deliveries = $firebase(new Firebase('https://brilliant-fire-2550.firebaseio.com/deliveries'));
     $scope.delivery = {};
     $scope.dorms = [
@@ -22,6 +21,7 @@ angular.module('hackvdayApp')
                                 roomNumber: $scope.delivery.roomNumber
                         });
         $scope.delivery = {};
+        $scope.deliveryForm.$setPristine();
 
         $location.hash('top');
         $anchorScroll();

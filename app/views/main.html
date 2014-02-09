@@ -50,9 +50,8 @@
   <div class="form-group">
     <label>Room Number</label>
     <input type="text" name="roomNumber" class="form-control" placeholder="Enter room"
-        ng-pattern="roomValidation" ng-model="delivery.roomNumber" required>
+        ng-model="delivery.roomNumber" required>
     <span class="error" ng-show="deliveryForm.roomNumber.$dirty && deliveryForm.roomNumber.$error.required">Required!</span>
-    <span class="error" ng-show="deliveryForm.roomNumber.$dirty && deliveryForm.roomNumber.$error.pattern">Up to 4 Numbers</span>
   </div>
   <button type="submit" ng-click="deliveryForm.$valid && addDelivery()" class="btn btn-default">Send!</button>
 </form>
