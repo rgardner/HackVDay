@@ -25,6 +25,7 @@ var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
 var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
 var GramarcyLocations = ['Gramercy Green', '26th Street'];
 
+var namesOfPhonenumbers = {};
 var techatnyuNumbers = ['+13473076953'];
 var WSP = [''];
 var Greenwich = [''];
@@ -33,6 +34,8 @@ var SOHO = [''];
 var ThirdAve = ['+13473076953'];
 var Gramarcy = [''];
 var Others = [''];
+
+namesOfPhonenumbers["3473076953"] = "Abhi";
 
 var determinePhoneByLocation = function(location, obj){
 	if(WSPLocations.indexOf(location) >= 0){
@@ -120,6 +123,18 @@ var filledForNow = function(from){
 				console.log(err);
 			}
 	});
+};
+
+var deliveredNow = function(queue, from){
+   twilio.sendMessage({
+		to: queue["information"]["phonenumber"],
+		from: '+14423337001',
+		body: "Your rose has been delivered by" + namesOfPhonenumbers[from] + "!"
+		}, function(err, responseData){
+			if(err){
+				console.log(err);
+			}
+	});
 }
 
 app.all('/getsms', function(req, res){
@@ -129,7 +144,8 @@ app.all('/getsms', function(req, res){
     	if(message.toLowerCase() == "done"){
     		for(i in queue){
     			if(queue[i]["person"] == from){
-    				console.log("You did 2");
+    				deliveredNow(queue[i], from);
+    				delete queue[i];
     			}
     		}
     	}
