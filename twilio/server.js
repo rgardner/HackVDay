@@ -70,7 +70,7 @@ var sendAllTechatNYUPeopleSMS = function(){
 			from: '+14423337001',
 			body: "Hey y'all Tech@NYU peeps, Valentines day is beginning. Lets do this. - valentinebot"
 		}, function(err, responseData){
-			if(1err){
+			if(err){
 				console.log(err);
 			}
 		});
