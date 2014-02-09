@@ -78,7 +78,7 @@ var incomingRequest = function(ID, requestData){
 var finishRequest = function(ID){
 	var fireClientOutDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.com/outdeliveries/' + ID);
 	fireClientOutDeliveries.set(userData);
-}
+};
 
 var startup = fuction(){
 	fireClientDeliveries.on('child_added', function(snapshot){
@@ -88,6 +88,7 @@ var startup = fuction(){
 };
 
 app.all('/getsms', function(req, res){
+	startup();
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
