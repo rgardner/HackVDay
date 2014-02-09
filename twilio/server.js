@@ -1,5 +1,6 @@
-//var firebase = require('firebase');
-//var fire = new firebase('https://abhi.firebaseio.com');
+var firebase = require('firebase');
+var fireClient = new firebase('https://brilliant-fire-2550.firebaseio.com/');
+var fireDeliveries = fireClient.child('deliveries');
 
 var express = require("express");
 var app = express();
@@ -72,8 +73,8 @@ var incomingRequest = function(name, phonenumber, location){
 	sendSMSforConfirmation(name, phonenumber, location);
 };
 
-incomingRequest("Abhi", "+13473076953", "Courant");
-incomingRequest("Bob", "+14256149938", "Courant");
+//incomingRequest("Abhi", "+13473076953", "Courant");
+//incomingRequest("Bob", "+14256149938", "Courant");
 
 app.all('/getsms', function(req, res){
 	var message = req.query.Body;
