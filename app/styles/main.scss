@@ -16,6 +16,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /* Space out content a bit */
 body {
+    background-color: #fff0f5;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -29,12 +30,26 @@ body {
 
 
 /* Custom page header */
+#logo {
+    width: auto;
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .header {
     border-bottom: 1px solid #e5e5e5;
 }
 
-#main h1 {
-    font-family: Lighthouse;
+#main {
+    h1 {
+        font-family: Lighthouse;
+        color: #800000;
+    }
+    p {
+        color: #8B3A3A;
+    }
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -63,6 +78,17 @@ body {
     background-size: 20px 10px;
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
+}
+
+/* Form */
+label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3em;
+    color: #800000;
+}
+
+.error {
+    color: red;
 }
 
 /* Responsive: Portrait tablets and up */

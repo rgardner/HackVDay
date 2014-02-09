@@ -19870,6 +19870,7 @@ td.visible-print {
 }
 
 body {
+  background-color: #fff0f5;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -19882,7 +19883,7 @@ body {
   }
 
   line {
-    font-family: \0000325;
+    font-family: \0000326;
   }
 }
 
@@ -19900,7 +19901,25 @@ body {
   }
 
   line {
-    font-family: \0000332;
+    font-family: \0000333;
+  }
+}
+
+#logo {
+  width: auto;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000341;
   }
 }
 
@@ -19914,12 +19933,27 @@ body {
   }
 
   line {
-    font-family: \0000336;
+    font-family: \0000346;
   }
 }
 
 #main h1 {
   font-family: Lighthouse;
+  color: #800000;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000350;
+  }
+}
+
+#main p {
+  color: #8B3A3A;
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -19930,7 +19964,7 @@ body {
   }
 
   line {
-    font-family: \0000341;
+    font-family: \0000356;
   }
 }
 
@@ -19949,7 +19983,7 @@ body {
   }
 
   line {
-    font-family: \0000350;
+    font-family: \0000365;
   }
 }
 
@@ -19965,7 +19999,7 @@ body {
   }
 
   line {
-    font-family: \0000356;
+    font-family: \0000371;
   }
 }
 
@@ -19981,7 +20015,7 @@ body {
   }
 
   line {
-    font-family: \0000361;
+    font-family: \0000376;
   }
 }
 
@@ -19990,6 +20024,38 @@ body {
   background-size: 20px 10px;
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+}
+
+/* Form */
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000384;
+  }
+}
+
+label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3em;
+  color: #800000;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000390;
+  }
+}
+
+.error {
+  color: red;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -20001,7 +20067,7 @@ body {
     }
 
     line {
-      font-family: \0000370;
+      font-family: \0000396;
     }
 }
 
@@ -20017,7 +20083,7 @@ body {
     }
 
     line {
-      font-family: \0000377;
+      font-family: \00003103;
     }
 }
 
@@ -20036,7 +20102,7 @@ body {
     }
 
     line {
-      font-family: \0000382;
+      font-family: \00003108;
     }
 }
 
