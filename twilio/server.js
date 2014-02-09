@@ -33,6 +33,7 @@ var Gramarcy = [''];
 var Others = [''];
 
 var determinePhoneByLocation = function(location, obj){
+	console.log(location);
 	if(WSPLocations.indexOf(location) >= 0){
 		WSPrequests.push(obj);
 	} else if(GreenwichLocations.indexOf(location) >= 0){
@@ -42,6 +43,7 @@ var determinePhoneByLocation = function(location, obj){
 	} else if(SOHOLocations.indexOf(location) >= 0) {
 		SOHOrequests.push(obj);
 	} else if(ThirdAveLocations.indexOf(location) >= 0) {
+		console.log(ThirdAverequests);
 		ThirdAverequests.push(obj);
 	} else if(GramarcyLocations.indexOf(location) >= 0) {
 		Gramarcyrequests.push(obj)
@@ -160,7 +162,6 @@ app.all('/getsms', function(req, res){
 	    			filledForNow(from);
 	    		}
     		} else if(ThirdAve.indexOf(from) >= 0){
-    			console.log(ThirdAverequests);
     			if(ThirdAverequests.length != 0){
 	    			submitRequestToIndividual(ThirdAverequests[0], from);
 	    			ThirdAverequests.shift();
