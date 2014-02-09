@@ -80,7 +80,7 @@ var finishRequest = function(ID){
 	fireClientOutDeliveries.set(userData);
 };
 
-var startup = fuction(){
+var startup = function(){
 	fireClientDeliveries.on('child_added', function(snapshot){
 		var ID = snapshot.name(), requestData = snapshot.val();
 		incomingRequest(ID, requestData);
