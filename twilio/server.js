@@ -101,8 +101,9 @@ var incomingRequest = function(ID, requestData){
 	var recipient = requestData["recipient"];
 	var phonenumber = requestData["phoneNumber"];
 	var location = (requestData["dorm"]) + " " + (requestData["roomNumber"]);
+	var dorm = requestData["dorm"];
 	var obj = {ID:ID, name:recipient, phonenumber:phonenumber, location:location};
-	determinePhoneByLocation(location, obj);
+	determinePhoneByLocation(dorm, obj);
 	sendSMSforConfirmation(name, phonenumber, location, recipient);
 };
 
