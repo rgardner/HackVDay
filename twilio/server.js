@@ -3,7 +3,6 @@ var fireClientDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.
 var express = require("express");
 var app = express();
 var url = require("url");
-var queue = [];
 var port = process.env.PORT || 5001;
 app.use(express.logger());
 app.listen(port, function() {
@@ -24,32 +23,28 @@ var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
 var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
 var GramarcyLocations = ['Gramercy Green', '26th Street'];
 
-var WSP = [];
-var Greenwich = [];
-var UnionSquare = [];
-var SOHO = [];
+var WSP = [{'Abhi', '+13473076953', 0}];
+var Greenwich = [{'Abhi', '+13473076953', 0}];
+var UnionSquare = [{'Abhi', '+13473076953', 0}];
+var SOHO = [{'Abhi', '+13473076953', 0}];
 var ThirdAve = [{'Bob', '+14256149938', 0}];
-var Gramarcy = [];
+var Gramarcy = [{'Abhi', '+13473076953', 0}];
 var Others = [{'Emanuel', '+13476068244', 0}];
 
-var determinePhoneByLocation = function(location){
+var determinePhoneByLocation = function(location, obj){
 	if(WSPLocations.indexOf(location) >= 0){
-
+		WSPrequests.push(obj);
 	} else if(GreenwichLocations.indexOf(location) >= 0){
-
+		Greenwichrequests.push(obj);
 	} else if(UnionSquareLocations.indexOf(location) >= 0){
-
+		UnionSquarerequests.push(obj);
 	} else if(SOHOLocations.indexOf(location) >= 0) {
-
+		SOHOrequests.push(obj);
 	} else if(ThirdAveLocations.indexOf(location) >= 0) {
-
+		ThirdAverequests.push(obj);
 	} else if(GramarcyLocations.indexOf(location) >= 0) {
-
+		Gramarcyrequests.push(obj)
 	}
-};
-
-var addtoQueue = function(){
-
 };
 
 var techatnyuNumbers = ['+13473076953'];
@@ -104,8 +99,7 @@ var incomingRequest = function(ID, requestData){
 	var phonenumber = requestData["phoneNumber"];
 	var location = (requestData["dorm"]) + " " + (requestData["roomNumber"]);
 	var obj = {ID:ID, name:recipient, phonenumber:phonenumber, location:location};
-	queue.push(obj);
-	addtoQueue(obj));
+	determinePhoneByLocation(location, obj));
 	sendSMSforConfirmation(name, phonenumber, location, recipient);
 };
 
@@ -119,24 +113,65 @@ fireClientDeliveries.on('child_added', function(snapshot){
 	incomingRequest(ID, requestData);
 });
 
+var filledForNow = function(from){
+    twilio.sendMessage({
+		to: from,
+		from: '+14423337001',
+		body: "All requests have been filled?? FOR NOW :)"
+		}, function(err, responseData){
+			if(err){
+				console.log(err);
+			}
+	});
+}
+
 app.all('/getsms', function(req, res){
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
     	if(message.toLowerCase() == "done"){
-    		if(queue.length != 0){
-    			submitRequestToIndividual(queue[0], from);
-    			queue.shift();
-    		} else {
-    			twilio.sendMessage({
-					to: from,
-					from: '+14423337001',
-					body: "All requests have been filled??"
-				}, function(err, responseData){
-					if(err){
-						console.log(err);
-					}
-				});
+    		if(WSP.indexOf(from) >= 0){
+    			if(WSPrequests.length != 0){
+	    			submitRequestToIndividual(WSPrequests[0], from);
+	    			WSPrequests.shift();
+    			} else {
+    				filledForNow(from);
+    			}
+    		} else if(Greenwich.indexOf(from) >= 0){
+    			if(Greenwichrequests.length != 0){
+	    			submitRequestToIndividual(Greenwichrequests[0], from);
+	    			Greenwichrequests.shift();
+    			} else {
+    				filledForNow(from);
+    			}
+    		} else if(UnionSquare.indexOf(from) >= 0){
+    			if(UnionSquarerequests.length != 0){
+	    			submitRequestToIndividual(UnionSquarerequests[0], from);
+	    			UnionSquarerequests.shift();
+	    		} else {
+	    			filledForNow(from);
+	    		}
+    		} else if(SOHO.indexOf(from) >= 0){
+    			if(SOHOrequests.length != 0){
+	    			submitRequestToIndividual(SOHOrequests[0], from);
+	    			SOHOrequests.shift();
+	    		} else {
+	    			filledForNow(from);
+	    		}
+    		} else if(ThirdAve.indexOf(from) >= 0){
+    			if(ThirdAverequests.length != 0){
+	    			submitRequestToIndividual(ThirdAverequests[0], from);
+	    			ThirdAverequests.shift();
+	    		} else {
+	    			filledForNow(from);
+	    		}
+    		} else if(Gramarcy.indexOf(from) >= 0){
+    			if(Gramarcyrequests.length != 0){
+	    			submitRequestToIndividual(Gramarcyrequests[0], from);
+	    			Gramarcyrequests.shift();
+	    		} else {
+	    			filledForNow(from);
+	    		}
     		}
     	}
     }
