@@ -13,13 +13,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainHandler),
         ]
-        settings = dict(
-            cookie_secret = "Dk3Pk/kFRHCukMLUYyfo3p7wXzhDiU+3rYx2K0/8po4",
-            template_path = os.path.join(os.path.dirname(__file__), ""),
-            static_path = os.path.join(os.path.dirname(__file__), "static"),
-            xsrf_cookies = True,
-            debug = True,
-        )
+
         tornado.web.Application.__init__(self, handlers, **settings)
 
 class MainHandler(tornado.web.RequestHandler):
