@@ -128,8 +128,7 @@ app.all('/getsms', function(req, res){
     if(techatnyuNumbers.indexOf(from) >= 0){
     	if(message.toLowerCase() == "done"){
     		for(i in queue){
-    			console.log(i);
-    			if(queue["person"] == from){
+    			if(queue[i]["person"] == from){
     				console.log("You did 2");
     			}
     		}
