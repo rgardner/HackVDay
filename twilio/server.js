@@ -80,11 +80,13 @@ var finishRequest = function(ID){
 	fireClientOutDeliveries.set(userData);
 };
 
+fireClientDeliveries.on('child_added', function(snapshot){
+	var ID = snapshot.name(), requestData = snapshot.val();
+	incomingRequest(ID, requestData);
+});
+
 var startup = function(){
-	fireClientDeliveries.on('child_added', function(snapshot){
-		var ID = snapshot.name(), requestData = snapshot.val();
-		incomingRequest(ID, requestData);
-	});
+	console.log("Starting up the Server");
 };
 
 app.all('/getsms', function(req, res){
