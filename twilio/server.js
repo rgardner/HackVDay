@@ -24,21 +24,13 @@ var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
 var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
 var GramarcyLocations = ['Gramercy Green', '26th Street'];
 
-var WSP = ['+13473076953'];
-var Greenwich = ['+13473076953'];
-var UnionSquare = ['+13473076953'];
-var SOHO = ['+13473076953'];
+var WSP = [''];
+var Greenwich = [''];
+var UnionSquare = [''];
+var SOHO = [''];
 var ThirdAve = ['+14256149938'];
-var Gramarcy = ['+13473076953'];
-var Others = ['+13476068244'];
-
-var WSP_status = [{name:'Abhi', phoneNumber:'+13473076953', status:0}];
-var Greenwich_status = [{name:'Abhi', phoneNumber:'+13473076953', status:0}];
-var UnionSquare_status = [{name:'Abhi', phoneNumber:'+13473076953', status:0}];
-var SOHO_status = [{name:'Abhi', phoneNumber:'+13473076953', status:0}];
-var ThirdAve_status = [{name:'Bob', phoneNumber:'+14256149938', status:0}];
-var Gramarcy_status = [{name:'Abhi', phoneNumber:'+13473076953', status:0}];
-var Others_status = [{name:'Emanuel', phoneNumber:'+13476068244', status:0}];
+var Gramarcy = [''];
+var Others = [''];
 
 var determinePhoneByLocation = function(location, obj){
 	if(WSPLocations.indexOf(location) >= 0){
