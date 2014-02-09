@@ -8,7 +8,7 @@ define("port", default=8888, help="run on the given port", type=int)
 
 class RootHandler(tornado.web.RequestHandler):
     def get(self):
-        self.redirect('/index.html', True)
+        self.redirect('index.html', True)
 
 def main():
     tornado.options.parse_command_line()
