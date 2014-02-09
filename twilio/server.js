@@ -25,12 +25,12 @@ var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
 var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
 var GramarcyLocations = ['Gramercy Green', '26th Street'];
 
-var techatnyuNumbers = ['+13473076953'];
+var techatnyuNumbers = ['+13473076953', '+14256149938'];
 var WSP = [''];
 var Greenwich = [''];
 var UnionSquare = [''];
 var SOHO = [''];
-var ThirdAve = ['+13473076953'];
+var ThirdAve = ['+13473076953', '+14256149938'];
 var Gramarcy = [''];
 var Others = [''];
 
