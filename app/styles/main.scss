@@ -42,25 +42,6 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-#main {
-    h1 {
-        font-family: Lighthouse;
-        color: #800000;
-    }
-    p {
-        color: #8B3A3A;
-    }
-}
-
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-}
-
-
 /* Custom page footer */
 .footer {
     padding-top: 19px;
@@ -76,8 +57,16 @@ body {
 #main {
     background-image: url(../images/Heart.png);
     background-size: 20px 10px;
-    text-align: center;
     border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+
+    h1 {
+        font-family: Lighthouse;
+        color: #800000;
+    }
+    p {
+        color: #8B3A3A;
+    }
 }
 
 /* Form */

@@ -19927,54 +19927,6 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
-  }
-
-  line {
-    font-family: \0000346;
-  }
-}
-
-#main h1 {
-  font-family: Lighthouse;
-  color: #800000;
-}
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
-  }
-
-  line {
-    font-family: \0000350;
-  }
-}
-
-#main p {
-  color: #8B3A3A;
-}
-
-/* Make the masthead heading the same height as the navigation */
-
-@media -sass-debug-info {
-  filename {
-    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
-  }
-
-  line {
-    font-family: \0000356;
-  }
-}
-
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
 /* Custom page footer */
 
 @media -sass-debug-info {
@@ -19983,7 +19935,7 @@ body {
   }
 
   line {
-    font-family: \0000365;
+    font-family: \0000346;
   }
 }
 
@@ -19999,7 +19951,7 @@ body {
   }
 
   line {
-    font-family: \0000371;
+    font-family: \0000352;
   }
 }
 
@@ -20015,15 +19967,44 @@ body {
   }
 
   line {
-    font-family: \0000376;
+    font-family: \0000357;
   }
 }
 
 #main {
   background-image: url(../images/Heart.png);
   background-size: 20px 10px;
-  text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000363;
+  }
+}
+
+#main h1 {
+  font-family: Lighthouse;
+  color: #800000;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/bobgardner\/Developer\/hackathons\/hack_cooper\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \0000367;
+  }
+}
+
+#main p {
+  color: #8B3A3A;
 }
 
 /* Form */
@@ -20034,7 +20015,7 @@ body {
   }
 
   line {
-    font-family: \0000384;
+    font-family: \0000373;
   }
 }
 
@@ -20050,7 +20031,7 @@ label {
   }
 
   line {
-    font-family: \0000390;
+    font-family: \0000379;
   }
 }
 
@@ -20067,7 +20048,7 @@ label {
     }
 
     line {
-      font-family: \0000396;
+      font-family: \0000385;
     }
 }
 
@@ -20083,7 +20064,7 @@ label {
     }
 
     line {
-      font-family: \00003103;
+      font-family: \0000392;
     }
 }
 
@@ -20102,7 +20083,7 @@ label {
     }
 
     line {
-      font-family: \00003108;
+      font-family: \0000397;
     }
 }
 
