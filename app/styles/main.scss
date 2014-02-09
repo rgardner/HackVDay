@@ -2,6 +2,11 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+@font-face {
+    font-family: Lighthouse;
+    src: url(fonts/Lighthouse.ttf);
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -22,9 +27,14 @@ body {
     padding-right: 15px;
 }
 
+
 /* Custom page header */
 .header {
     border-bottom: 1px solid #e5e5e5;
+}
+
+#main h1 {
+    font-family: Lighthouse;
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -34,6 +44,7 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
 }
+
 
 /* Custom page footer */
 .footer {
@@ -48,6 +59,8 @@ body {
 
 /* Main marketing message and sign up button */
 #main {
+    background-image: url(../images/Heart.png);
+    background-size: 20px 10px;
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
 }
