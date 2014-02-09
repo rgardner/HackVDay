@@ -10,28 +10,49 @@ app.listen(port, function() {
     console.log("Client listening on " + port);
 });
 
-var nonDormIndividuals = {
-	name: ['Abhi', 'Emanuel'],
-	phone: ['+13473076953', '+13476068244']
-};
-var dormsIndividuals = {
-	name: ['Bob', 'Abhinay', 'Ben', 'Max', 'Terri', 'Kim'],
-	phone: ['+14256149938']
-};
-var twilio = require('twilio')('ACd44100ff63d9f063b149272c1c9b8f64', '372306737e389b83729d9d7f5c0fe1e2');
-var techatnyuNumbers = ['+13473076953', '+14256149938', '+13476068244'];
+var WSPrequests = [];
+var Greenwichrequests = [];
+var UnionSquarerequests = [];
+var SOHOrequests = [];
+var ThirdAverequests = [];
+var Gramarcyrequests = [];
 
-var sendSMSforConfirmation = function(name, phonenumber, location){
-	twilio.sendMessage({
-			to: phonenumber,
-			from: '+14423337001',
-			body: "Hey " + name + " we've got your request."
-	}, function(err, responseData){
-		if(err){
-			console.log(err);
-		}
-	});
+var WSPLocations = ['Weinstein Hall', 'Hayden Hall', 'Founders Hall', 'Brittany Hall', 'Goddard Hall', 'Rubin Hall'];
+var GreenwichLocations = ['Greenwich Hotel'];
+var UnionSquareLocations = ['Carlyle Court', 'Coral Towers', 'Palladium Hall', 'W. 13th Street', 'University Hall'];
+var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
+var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
+var GramarcyLocations = ['Gramercy Green', '26th Street'];
+
+var WSP = [];
+var Greenwich = [];
+var UnionSquare = [];
+var SOHO = [];
+var ThirdAve = [{'Bob', '+14256149938', 0}];
+var Gramarcy = [];
+var Others = [{'Emanuel', '+13476068244', 0}];
+
+var determinePhoneByLocation = function(location){
+	if(WSPLocations.indexOf(location) >= 0){
+
+	} else if(GreenwichLocations.indexOf(location) >= 0){
+
+	} else if(UnionSquareLocations.indexOf(location) >= 0){
+
+	} else if(SOHOLocations.indexOf(location) >= 0) {
+
+	} else if(ThirdAveLocations.indexOf(location) >= 0) {
+
+	} else if(GramarcyLocations.indexOf(location) >= 0) {
+
+	}
 };
+
+var addtoQueue = function(){
+
+};
+
+var techatnyuNumbers = ['+13473076953'];
 
 var submitRequestToIndividual = function(request, giveRequestTo){
 	twilio.sendMessage({
@@ -53,7 +74,7 @@ var sendAllTechatNYUPeopleSMS = function(){
 		twilio.sendMessage({
 			to: techatnyuNumbers[smsNumber],
 			from: '+14423337001',
-			body: "Hey y'all Tech@NYU, Valentines day is beginning. Lets do this."
+			body: "Hey y'all Tech@NYU peeps, Valentines day is beginning. Lets do this. - valentinebot"
 		}, function(err, responseData){
 			if(!err){
 				console.log(responseData.from);
@@ -65,6 +86,18 @@ var sendAllTechatNYUPeopleSMS = function(){
 	}
 };
 
+var sendSMSforConfirmation = function(name, phonenumber, location, recipient){
+	twilio.sendMessage({
+			to: phonenumber,
+			from: '+14423337001',
+			body: "Hey " + name + " we're out to deliver the rose for " + recipient + " now :) It will be at " + location + " soon!"
+	}, function(err, responseData){
+		if(err){
+			console.log(err);
+		}
+	});
+};
+
 var incomingRequest = function(ID, requestData){
 	var name = requestData["sender"];
 	var recipient = requestData["recipient"];
@@ -72,7 +105,8 @@ var incomingRequest = function(ID, requestData){
 	var location = (requestData["dorm"]) + " " + (requestData["roomNumber"]);
 	var obj = {ID:ID, name:recipient, phonenumber:phonenumber, location:location};
 	queue.push(obj);
-	sendSMSforConfirmation(name, phonenumber, location);
+	addtoQueue(obj));
+	sendSMSforConfirmation(name, phonenumber, location, recipient);
 };
 
 var finishRequest = function(ID){
@@ -85,12 +119,7 @@ fireClientDeliveries.on('child_added', function(snapshot){
 	incomingRequest(ID, requestData);
 });
 
-var startup = function(){
-	console.log("Starting up the Server");
-};
-
 app.all('/getsms', function(req, res){
-	startup();
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
