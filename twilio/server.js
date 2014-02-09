@@ -99,7 +99,7 @@ var incomingRequest = function(ID, requestData){
 	var phonenumber = requestData["phoneNumber"];
 	var location = (requestData["dorm"]) + " " + (requestData["roomNumber"]);
 	var obj = {ID:ID, name:recipient, phonenumber:phonenumber, location:location};
-	determinePhoneByLocation(location, obj));
+	determinePhoneByLocation(location, obj);
 	sendSMSforConfirmation(name, phonenumber, location, recipient);
 };
 
