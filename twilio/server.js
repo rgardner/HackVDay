@@ -47,7 +47,7 @@ var sendAllSMS = function(){
 app.all('/getsms', function(req, res){
 	var message = req.query.Body;
     var from = req.query.From;
-    if(from in techatnyuNumbers){
+    if(techatnyuNumbers.indexOf(from) >= 0){
     	if(message == "Done"){
     		console.log("hello");
     	}
