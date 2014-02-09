@@ -2,8 +2,8 @@
   <h3 class="text-muted">Tech@NYU</h3>
 </div>
 
-<div class="jumbotron">
-  <h1>HackVDay</h1>
+<div id="main">
+  <h1>#Hack V-Day</h1>
   <p class="lead">
     Send a rose or chocolate to your special someone this Valentines Day!
   </p>
@@ -30,15 +30,7 @@
     <label>Your phone number</label>
     <input type="text" class="form-control" placeholder="XXX XXX-XXXX"
         ng-model="delivery.phoneNumber">
-  </div>
-
-  <div class="form-group">
-    <label class="checkbox-inline">
-      <input type="checkbox" value="rose" ng-model="delivery.rose"> Rose
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="chocolate" ng-model="delivery.chocolate"> Chocolate
-    </label>
+    <span class="help-block">We only use your phone number to send you delivery status.</span>
   </div>
 
   <div class="form-group">
