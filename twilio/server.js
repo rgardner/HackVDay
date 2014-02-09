@@ -19,7 +19,7 @@ var dormsIndividuals = {
 	phone: ['+14256149938']
 };
 var twilio = require('twilio')('ACd44100ff63d9f063b149272c1c9b8f64', '372306737e389b83729d9d7f5c0fe1e2');
-var techatnyuNumbers = ['+13473076953', '+14256149938'];
+var techatnyuNumbers = ['+13473076953', '+14256149938', '+13476068244'];
 
 var sendAllSMS = function(){
 	for(smsNumber in techatnyuNumbers){
