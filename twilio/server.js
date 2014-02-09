@@ -19,7 +19,6 @@ var dormsIndividuals = {
 	name: ['Bob', 'Abhinay', 'Ben', 'Max', 'Terri', 'Kim'],
 	phone: ['+14256149938']
 };
-
 var twilio = require('twilio')('ACd44100ff63d9f063b149272c1c9b8f64', '372306737e389b83729d9d7f5c0fe1e2');
 var techatnyuNumbers = ['+13473076953', '+14256149938', '+13476068244'];
 
@@ -53,7 +52,7 @@ var submitRequestToIndividual = function(request, giveRequestTo){
 	});
 };
 
-var sendAllSMS = function(){
+var sendAllTechatNYUPeopleSMS = function(){
 	for(smsNumber in techatnyuNumbers){
 		twilio.sendMessage({
 			to: techatnyuNumbers[smsNumber],
@@ -82,11 +81,10 @@ app.all('/getsms', function(req, res){
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
-    	if(message == "Done"){
+    	if(message.toLowerCase() == "done"){
     		if(queue.length != 0){
     			submitRequestToIndividual(queue[0], from);
-    			queue = queue.shift();
-    			console.log(queue);
+    			queue.shift();
     		} else {
     			twilio.sendMessage({
 					to: from,
