@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('hackvdayApp')
-  .controller('MainCtrl', function ($scope, $firebase) {
+  .controller('MainCtrl', function ($scope, $location, $firebase) {
     $scope.phoneValidation = /^\d{10}$/;
     $scope.roomValidation = /^\d{1,4}$/;
     $scope.deliveries = $firebase(new Firebase('https://brilliant-fire-2550.firebaseio.com/deliveries'));
@@ -21,6 +21,9 @@ angular.module('hackvdayApp')
                                 dorm: $scope.delivery.dorm,
                                 roomNumber: $scope.delivery.roomNumber
                         });
-        $scope.newPerson = {};
+        $scope.delivery = {};
+
+        $location.hash('top');
+        $anchorScroll();
     }
   });
