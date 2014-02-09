@@ -52,16 +52,12 @@ var determinePhoneByLocation = function(location, obj){
 
 var submitRequestToIndividual = function(request, giveRequestTo){
 	queue.push({person: giveRequestTo, information: request});
-	console.log(queue);
 	twilio.sendMessage({
 		to: giveRequestTo,
 		from: '+14423337001',
 		body: "Location: " + request.location + ", Name: " + request.name + ", Phone Number: " + request.phonenumber
 	}, function(err, responseData){
-		if(!err){
-			console.log(responseData.from);
-			console.log(responseData.body);
-		} else {
+		if(err){
 			console.log(err);
 		}
 	});
@@ -74,10 +70,7 @@ var sendAllTechatNYUPeopleSMS = function(){
 			from: '+14423337001',
 			body: "Hey y'all Tech@NYU peeps, Valentines day is beginning. Lets do this. - valentinebot"
 		}, function(err, responseData){
-			if(!err){
-				console.log(responseData.from);
-				console.log(responseData.body);
-			} else {
+			if(1err){
 				console.log(err);
 			}
 		});
@@ -134,6 +127,13 @@ app.all('/getsms', function(req, res){
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
     	if(message.toLowerCase() == "done" || message.toLowerCase() == "start"){
+    		if(message.toLowerCase() == "done"){
+    			for(i in queue){
+    				if(queue["person"] == from){
+    					console.log("You did 2");
+    				}
+    			}
+    		}
     		if(WSP.indexOf(from) >= 0){
     			if(WSPrequests.length != 0){
 	    			submitRequestToIndividual(WSPrequests[0], from);
