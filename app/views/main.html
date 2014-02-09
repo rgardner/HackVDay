@@ -9,53 +9,47 @@
   </p>
 </div>
 
-<form role="form">
+<form name="deliveryForm" novalidate role="form">
   <div class="form-group">
-    <label for="to">His/Her name</label>
-    <input type="text" class="form-control" id="soname" placeholder="Enter his/her name">
+    <label>His/Her name</label>
+    <input type="text" name="recipient" class="form-control" placeholder="Enter his/her name"
+        ng-model="delivery.recipient" required>
   </div>
 
   <div class="form-group">
-    <label for="message">Message</label>
-    <textarea class="form-control" rows="3"></textarea>
+    <label>Message</label>
+    <textarea class="form-control" rows="3" ng-model="delivery.message" required></textarea>
   </div>
 
   <div class="form-group">
-    <label for="from">Your name</label>
-    <input type="text" class="form-control" id="soname" placeholder="Enter your name">
+    <label>Your name</label>
+    <input type="text" class="form-control" placeholder="Enter your name" ng-model="delivery.sender">
+  </div>
+
+  <div class="form-group">
+    <label>Your phone number</label>
+    <input type="text" class="form-control" placeholder="XXX XXX-XXXX"
+        ng-model="delivery.phoneNumber">
   </div>
 
   <div class="form-group">
     <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox1" value="rose"> Rose
+      <input type="checkbox" value="rose" ng-model="delivery.rose"> Rose
     </label>
     <label class="checkbox-inline">
-      <input type="checkbox" id="inlineCheckbox2" value="chocolate"> Chocolate
+      <input type="checkbox" value="chocolate" ng-model="delivery.chocolate"> Chocolate
     </label>
   </div>
 
-  <label for="destination">Destination</label>
-  <select class="form-control">
-    <option>Carlyle Court</option>
-    <option>Founders Hall</option>
-    <option>Goddard Hall</option>
-    <option>Weinstein</option>
-    <option>Third North</option>
-  </select>
-
   <div class="form-group">
+    <label for="destination">Destination</label>
+    <select class="form-control" ng-model="delivery.dorm" ng-options="dorm for dorm in dorms"></select>
+
     <label for="destination">Room Number</label>
-    <input type="text" class="form-control" id="room" placeholder="Enter room">
+    <input type="text" class="form-control" placeholder="Enter room" ng-model="delivery.roomNumber">
   </div>
-  <button type="submit" class="btn btn-default">Send!</button>
+  <button type="submit" ng-click="addDelivery()" class="btn btn-default">Send!</button>
 </form>
-
-<div class="row marketing">
-  <div ng-repeat="message in messages">
-    <h4>{{message.name}}</h4>
-    <p>{{message.text}}</p>
-  </div>
-</div>
 
 <div class="footer">
   <p>♥ from Tech@NYU</p>
