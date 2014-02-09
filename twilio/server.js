@@ -85,7 +85,7 @@ app.all('/getsms', function(req, res){
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
     	if(message == "Done"){
-    		if(stack.length != 0){
+    		if(queue.length != 0){
     			co
     			submitRequestToIndividual(queue[0], from);
     			queue = queue.shift();
