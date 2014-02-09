@@ -39,20 +39,18 @@ var sendSMSforConfirmation = function(name, phonenumber, location){
 };
 
 var submitRequestToIndividual = function(request, giveRequestTo){
-	for(smsNumber in techatnyuNumbers){
-		twilio.sendMessage({
-			to: giveRequestTo,
-			from: '+14423337001',
-			body: "Location: " + request.location + ", Name: " + request.name + ", Phone Number: " + request.phonenumber
-		}, function(err, responseData){
-			if(!err){
-				console.log(responseData.from);
-				console.log(responseData.body);
-			} else {
-				console.log(err);
-			}
-		});
-	}
+	twilio.sendMessage({
+		to: giveRequestTo,
+		from: '+14423337001',
+		body: "Location: " + request.location + ", Name: " + request.name + ", Phone Number: " + request.phonenumber
+	}, function(err, responseData){
+		if(!err){
+			console.log(responseData.from);
+			console.log(responseData.body);
+		} else {
+			console.log(err);
+		}
+	});
 };
 
 var sendAllSMS = function(){
