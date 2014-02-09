@@ -1,6 +1,5 @@
 var firebase = require('firebase');
 var fireClientDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.com/deliveries');;
-
 var express = require("express");
 var app = express();
 var url = require("url");
@@ -67,23 +66,26 @@ var sendAllTechatNYUPeopleSMS = function(){
 };
 
 var incomingRequest = function(ID, requestData){
-	var name = requestData["recipient"];
+	var name = requestData["sender"];
+	var recipient = requestData["recipient"];
 	var phonenumber = requestData["phoneNumber"];
 	var location = (requestData["dorm"]) + " " + (requestData["roomNumber"]);
-	var obj = {ID:ID, name:name, phonenumber:phonenumber, location:location};
+	var obj = {ID:ID, name:recipient, phonenumber:phonenumber, location:location};
 	queue.push(obj);
 	sendSMSforConfirmation(name, phonenumber, location);
 };
 
 var finishRequest = function(ID){
-	var fireClientOutDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.com/outdeliveries/' + ID)
-  fireClientOutDeliveries.set(userData);
+	var fireClientOutDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.com/outdeliveries/' + ID);
+	fireClientOutDeliveries.set(userData);
 }
 
-fireClientDeliveries.on('child_added', function(snapshot){
-  var ID = snapshot.name(), requestData = snapshot.val();
-  incomingRequest(ID, requestData);
-});
+var startup = fuction(){
+	fireClientDeliveries.on('child_added', function(snapshot){
+		var ID = snapshot.name(), requestData = snapshot.val();
+		incomingRequest(ID, requestData);
+	});
+};
 
 app.all('/getsms', function(req, res){
 	var message = req.query.Body;
