@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "hello",
   "dependencies": {},
-  "repository":"",
+  "repository":{
+    "type" : "git",
+    "url" : "http://github.com/rgardner/HackVDay"
+    },
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
