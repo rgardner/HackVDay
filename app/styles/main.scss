@@ -59,14 +59,15 @@ body {
     background-size: 20px 10px;
     border-bottom: 1px solid #e5e5e5;
     text-align: center;
+}
 
-    h1 {
-        font-family: Lighthouse;
-        color: #800000;
-    }
-    p {
-        color: #8B3A3A;
-    }
+#main h1 {
+    font-family: Lighthouse;
+    color: #800000;
+}
+
+#main p {
+    color: #8B3A3A;
 }
 
 /* Form */
