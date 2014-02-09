@@ -4,17 +4,13 @@
 var express = require("express");
 var app = express();
 var url = require("url");
-var stack = [];
+var queue = [];
 var port = process.env.PORT || 5001;
 app.use(express.logger());
 app.listen(port, function() {
     console.log("Client listening on " + port);
 });
 
-var incomingRequest = function(name, phonenumber, location){
-	var obj = {name:name, phonenumber:phonenumber, location:location};
-	stack.push(obj);
-};
 var nonDormIndividuals = {
 	name: ['Abhi', 'Emanuel'],
 	phone: ['+13473076953', '+13476068244']
@@ -25,7 +21,39 @@ var dormsIndividuals = {
 };
 
 var twilio = require('twilio')('ACd44100ff63d9f063b149272c1c9b8f64', '372306737e389b83729d9d7f5c0fe1e2');
-var techatnyuNumbers = ['+13473076953', '+14256149938', '+13476068244'];
+var techatnyuNumbers = ['+13473076953'/*, '+14256149938', '+13476068244'*/];
+
+var sendSMSforConfirmation = function(name, phonenumber, location){
+	twilio.sendMessage({
+			to: phonenumber,
+			from: '+14423337001',
+			body: "Hey " + name + " we've got your request."
+	}, function(err, responseData){
+		if(!err){
+			console.log(responseData.from);
+			console.log(responseData.body);
+		} else {
+			console.log(err);
+		}
+	});
+};
+
+var submitRequestToIndividual = function(request, giveRequestTo){
+	for(smsNumber in techatnyuNumbers){
+		twilio.sendMessage({
+			to: giveRequestTo,
+			from: '+14423337001',
+			body: "Location: " + request.location + ", Name: " + request.name + ", Phone Number: " + request.phonenumber
+		}, function(err, responseData){
+			if(!err){
+				console.log(responseData.from);
+				console.log(responseData.body);
+			} else {
+				console.log(err);
+			}
+		});
+	}
+};
 
 var sendAllSMS = function(){
 	for(smsNumber in techatnyuNumbers){
@@ -44,12 +72,33 @@ var sendAllSMS = function(){
 	}
 };
 
+var incomingRequest = function(name, phonenumber, location){
+	var obj = {name:name, phonenumber:phonenumber, location:location};
+	queue.push(obj);
+	sendSMSforConfirmation(name, phonenumber, location);
+};
+
+incomingRequest("Abhi", "+13473076953", "Courant");
+
 app.all('/getsms', function(req, res){
 	var message = req.query.Body;
     var from = req.query.From;
     if(techatnyuNumbers.indexOf(from) >= 0){
     	if(message == "Done"){
-    		console.log("hello");
+    		if(stack.length != 0){
+    			submitRequestToIndividual(queue[0], from);
+    			queue = queue.shift();
+    		} else {
+    			twilio.sendMessage({
+					to: from,
+					from: '+14423337001',
+					body: "All requests have been filled??"
+				}, function(err, responseData){
+					if(err){
+						console.log(err);
+					}
+				});
+    		}
     	}
     }
 });
