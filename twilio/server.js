@@ -160,6 +160,7 @@ app.all('/getsms', function(req, res){
 	    			filledForNow(from);
 	    		}
     		} else if(ThirdAve.indexOf(from) >= 0){
+    			console.log(ThirdAverequests);
     			if(ThirdAverequests.length != 0){
 	    			submitRequestToIndividual(ThirdAverequests[0], from);
 	    			ThirdAverequests.shift();
