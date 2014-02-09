@@ -14,7 +14,7 @@ def main():
     tornado.options.parse_command_line()
     app = tornado.web.Application([
         (r"/", RootHandler),
-        (r"/(.+)", StaticFileHandler, dict(path='static')),
+        (r"/(.+)", StaticFileHandler, dict(path='app')),
     ])
     app.listen(options.port)
 
