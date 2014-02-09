@@ -5,7 +5,7 @@
 <div id="main">
   <h1>#Hack V-Day</h1>
   <p class="lead">
-    Send a rose or chocolate to your special someone this Valentines Day!
+    Send a rose to your special someone this Valentines Day!
   </p>
 </div>
 
@@ -14,33 +14,47 @@
     <label>His/Her name</label>
     <input type="text" name="recipient" class="form-control" placeholder="Enter his/her name"
         ng-model="delivery.recipient" required>
+    <span class="error" ng-show="deliveryForm.recipient.$error.required">Required!</span>
   </div>
 
   <div class="form-group">
     <label>Message</label>
-    <textarea class="form-control" rows="3" ng-model="delivery.message" required></textarea>
+    <textarea class="form-control" rows="3" placeholder="You make me feel special."
+        ng-model="delivery.message" required></textarea>
+    <span class="error" ng-show="deliveryForm.message.$error.required">Required!</span>
   </div>
 
   <div class="form-group">
     <label>Your name</label>
-    <input type="text" class="form-control" placeholder="Enter your name" ng-model="delivery.sender">
+    <input type="text" name="sender" class="form-control" placeholder="Enter your name"
+        ng-model="delivery.sender" required>
+    <span class="error" ng-show="deliveryForm.sender.$error.required">Required!</span>
   </div>
 
   <div class="form-group">
     <label>Your phone number</label>
-    <input type="text" class="form-control" placeholder="XXX XXX-XXXX"
-        ng-model="delivery.phoneNumber">
+    <input type="number" name="phoneNumber" class="form-control" placeholder="XXXXXXXXXX"
+        ng-pattern="phoneValidation" ng-model="delivery.phoneNumber" required>
+    <span class="error" ng-show="deliveryForm.phoneNumber.$error.required">Required!</span>
+    <span class="error" ng-show="deliveryForm.phoneNumber.$error.pattern">Invalid phone number!</span>
     <span class="help-block">We only use your phone number to send you delivery status.</span>
   </div>
 
   <div class="form-group">
-    <label for="destination">Destination</label>
-    <select class="form-control" ng-model="delivery.dorm" ng-options="dorm for dorm in dorms"></select>
-
-    <label for="destination">Room Number</label>
-    <input type="text" class="form-control" placeholder="Enter room" ng-model="delivery.roomNumber">
+    <label>Destination</label>
+    <select name="dorm" class="form-control" ng-model="delivery.dorm" ng-options="dorm for dorm in dorms"
+        required>
+    </select>
+    <span class="error" ng-show="deliveryForm.dorm.$error.required">Required!</span>
   </div>
-  <button type="submit" ng-click="addDelivery()" class="btn btn-default">Send!</button>
+  <div class="form-group">
+    <label>Room Number</label>
+    <input type="text" name="roomNumber" class="form-control" placeholder="Enter room"
+        ng-pattern="roomValidation" ng-model="delivery.roomNumber" required>
+    <span class="error" ng-show="deliveryForm.roomNumber.$error.required">Required!</span>
+    <span class="error" ng-show="deliveryForm.roomNumber.$error.pattern">Up to 4 Numbers</span>
+  </div>
+  <button type="submit" ng-click="deliveryForm.$valid && addDelivery()" class="btn btn-default">Send!</button>
 </form>
 
 <div class="footer">
