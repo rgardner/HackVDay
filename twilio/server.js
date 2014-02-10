@@ -81,7 +81,7 @@ var sendSMSforConfirmation = function(name, phonenumber, location, recipient){
 	twilio.sendMessage({
 			to: phonenumber,
 			from: '+14423337001',
-			body: "Hey " + name + " we're out to deliver the rose for " + recipient + " now :) It will be at " + location + " soon!"
+			body: "Hey " + name + ", we just received your request. We'll notify you when your rose is delivered to " + recipient + " at " + location;
 	}, function(err, responseData){
 		if(err){
 			console.log(err);
