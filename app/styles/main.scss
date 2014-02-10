@@ -11,6 +11,7 @@ $fg-primary: #800000;    // Maroon
 $fg-secondary: #8B3A3A;  // Red Indian 4
 $bg-primary: #fff0f5;    // Lavender Blush
 $bg-secondary: #e5e5e5;  // Light Gray
+$bg-ternary: #FFF;       // White
 
 .browsehappy {
     margin: 0.2em 0;
@@ -52,6 +53,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5px;
 }
 
 /* Jumbotron-like explanatory section. */
@@ -70,6 +72,12 @@ body {
         margin: 0 5% 10px;
         color: $fg-secondary;
     }
+}
+
+#thanks {
+    color: $fg-primary;
+    background-color: $bg-ternary;
+    text-align: center;
 }
 
 /* Form */
