@@ -7,6 +7,11 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
     src: url(fonts/Lighthouse.ttf);
 }
 
+$fg-primary: #800000;    // Maroon
+$fg-secondary: #8B3A3A;  // Red Indian 4
+$bg-primary: #fff0f5;    // Lavender Blush
+$bg-secondary: #e5e5e5;  // Light Gray
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -16,20 +21,31 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /* Space out content a bit */
 body {
-    background-color: #fff0f5;
+    background-color: $bg-primary;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.footer {
+.header, .footer {
     padding-left: 15px;
     padding-right: 15px;
 }
 
+.header {
+    border-bottom: 1px solid $bg-secondary;
+}
 
-/* Custom page header */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid $bg-secondary;
+}
+
 #logo {
     width: auto;
     height: 50px;
@@ -38,43 +54,29 @@ body {
     margin-right: auto;
 }
 
-.header {
-    border-bottom: 1px solid #e5e5e5;
-}
-
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-    margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
+/* Jumbotron-like explanatory section. */
 #main {
     background-image: url(../images/Heart.png);
     background-size: 20px 10px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid $bg-secondary;
     text-align: center;
-}
 
-#main h1 {
-    font-family: Lighthouse;
-    color: #800000;
-}
+    h1 {
+        font-family: Lighthouse;
+        color: $fg-primary;
+    }
 
-#main p {
-    color: #8B3A3A;
+    p {
+        margin: 0 5% 10px;
+        color: $fg-secondary;
+    }
 }
 
 /* Form */
 label {
     font-family: 'Dancing Script', cursive;
     font-size: 1.3em;
-    color: #800000;
+    color: $fg-primary;
 }
 
 .error {
