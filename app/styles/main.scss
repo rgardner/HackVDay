@@ -27,6 +27,12 @@ body {
     padding-bottom: 20px;
 }
 
+a {
+    font-weight: bold;
+    color: $fg-secondary;
+    border-bottom: 1px dotted #ba0000;
+}
+
 .container-narrow > hr {
     margin: 30px 0;
 }
@@ -62,7 +68,6 @@ body {
     background-size: 20px 10px;
     border-bottom: 1px solid $bg-secondary;
     text-align: center;
-
     h1 {
         font-family: Lighthouse;
         color: $fg-primary;
@@ -71,19 +76,6 @@ body {
     p {
         margin: 0 5% 10px;
         color: $fg-secondary;
-    }
-}
-
-#thanks {
-    color: $fg-primary;
-    background-color: $bg-ternary;
-    text-align: center;
-    h1 {
-        font-family: cursive;
-        font-size: 4em;
-    }
-    p {
-        font-size: 1.2em;
     }
 }
 

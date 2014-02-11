@@ -9,6 +9,10 @@ angular.module('hackvdayApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/thanks', {
+        templateUrl: 'views/thanks.html',
+        controller: 'ThanksCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
