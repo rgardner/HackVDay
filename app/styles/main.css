@@ -4,7 +4,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @font-face {
     font-family: Lighthouse;
-    src: url(fonts/Lighthouse.ttf);
+    src: url('fonts/Lighthouse.ttf');
 }
 
 $fg-primary: #800000;    // Maroon
@@ -58,7 +58,7 @@ body {
 
 /* Jumbotron-like explanatory section. */
 #main {
-    background-image: url(../images/Heart.png);
+    background-image: url(../images/heart.png);
     background-size: 20px 10px;
     border-bottom: 1px solid $bg-secondary;
     text-align: center;
