@@ -20,10 +20,11 @@ angular.module('hackvdayApp')
                                 dorm: $scope.delivery.dorm,
                                 roomNumber: $scope.delivery.roomNumber
                         });
-        $scope.delivery = {};
-        $scope.deliveryForm.$setPristine();
         sessionStorage.setItem('recipient', $scope.delivery.recipient);
         sessionStorage.setItem('sender', $scope.delivery.sender);
+
+        $scope.delivery = {};
+        $scope.deliveryForm.$setPristine();
         $location.path('thanks');
       };
   })
