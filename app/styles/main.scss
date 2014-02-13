@@ -38,7 +38,7 @@ a {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header, .footer {
+.header, footer {
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -47,10 +47,20 @@ a {
     border-bottom: 1px solid $bg-secondary;
 }
 
-.footer {
+footer {
     padding-top: 19px;
     color: #777;
     border-top: 1px solid $bg-secondary;
+    ul {
+        padding-left: 20px;
+        margin-bottom: 10px;
+        float: right;
+        list-style: none;
+        li {
+            float: left;
+            margin-left: 5px;
+        }
+    }
 }
 
 #logo {
