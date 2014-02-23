@@ -101,7 +101,7 @@ var incomingRequest = function(ID, requestData){
 };
 
 var finishRequest = function(ID){
-	var fireClientOutDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.com/outdeliveries/' + ID);
+	var fireClientOutDeliveries = new firebase('' + ID);
 	fireClientOutDeliveries.set(userData);
 };
 
