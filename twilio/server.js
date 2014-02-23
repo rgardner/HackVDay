@@ -1,5 +1,5 @@
 var firebase = require('firebase');
-var fireClientDeliveries = new firebase('https://brilliant-fire-2550.firebaseio.com/deliveries');;
+var fireClientDeliveries = new firebase('');;
 var express = require("express");
 var app = express();
 var url = require("url");
@@ -8,7 +8,7 @@ app.use(express.logger());
 app.listen(port, function() {
     console.log("Client listening on " + port);
 });
-var twilio = require('twilio')('ACd44100ff63d9f063b149272c1c9b8f64', '372306737e389b83729d9d7f5c0fe1e2');
+var twilio = require('twilio')('', '');
 
 var queue = [];
 var WSPrequests = [];
@@ -25,12 +25,12 @@ var SOHOLocations = ['Broome Street', 'Lafayette Hall', 'Second Street'];
 var ThirdAveLocations = ['Alumni Hall', 'Seventh Street', 'Third Avenue North'];
 var GramarcyLocations = ['Gramercy Green', '26th Street'];
 
-var techatnyuNumbers = ['+13473076953', '+14256149938'];
+var techatnyuNumbers = [];
 var WSP = [''];
 var Greenwich = [''];
 var UnionSquare = [''];
 var SOHO = [''];
-var ThirdAve = ['+13473076953', '+14256149938'];
+var ThirdAve = [];
 var Gramarcy = [''];
 var Others = [''];
 
@@ -54,7 +54,7 @@ var submitRequestToIndividual = function(request, giveRequestTo){
 	queue.push({person: giveRequestTo, information: request});
 	twilio.sendMessage({
 		to: giveRequestTo,
-		from: '+14423337001',
+		from: '',
 		body: "Location: " + request.location + ", Name: " + request.name + ", Phone Number: " + request.phonenumber
 	}, function(err, responseData){
 		if(err){
@@ -67,7 +67,7 @@ var sendAllTechatNYUPeopleSMS = function(){
 	for(smsNumber in techatnyuNumbers){
 		twilio.sendMessage({
 			to: techatnyuNumbers[smsNumber],
-			from: '+14423337001',
+			from: '+',
 			body: "Hey y'all Tech@NYU peeps, Valentines day is beginning. Lets do this. - valentinebot"
 		}, function(err, responseData){
 			if(err){
@@ -80,7 +80,7 @@ var sendAllTechatNYUPeopleSMS = function(){
 var sendSMSforConfirmation = function(name, phonenumber, location, recipient){
 	twilio.sendMessage({
 			to: phonenumber,
-			from: '+14423337001',
+			from: '',
 			body: "Hey " + name + ", we just received your request. We'll notify you when your rose is delivered to " + recipient + " at " + location;
 	}, function(err, responseData){
 		if(err){
@@ -113,7 +113,7 @@ fireClientDeliveries.on('child_added', function(snapshot){
 var filledForNow = function(from){
     twilio.sendMessage({
 		to: from,
-		from: '+14423337001',
+		from: '',
 		body: "All requests have been filled?? FOR NOW :)"
 		}, function(err, responseData){
 			if(err){
@@ -125,7 +125,7 @@ var filledForNow = function(from){
 var deliveredNow = function(queue){
    twilio.sendMessage({
 		to: queue["information"]["phonenumber"],
-		from: '+14423337001',
+		from: '',
 		body: "Your rose has been delivered!"
 		}, function(err, responseData){
 			if(err){
